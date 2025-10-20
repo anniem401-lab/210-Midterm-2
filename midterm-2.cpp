@@ -10,18 +10,19 @@
 #include <cstdlib>  // for rand() and srand()
 #include <vector>   // For using vector
 #include <string>   // FOr using string
+#include <iomanip>
 using namespace std;
 
-const int MIN_NR = 1, MAX_NR = 100, MIN_LS = 5, MAX_LS = 20;
+const int MIN_NR = 1, MAX_NR = 100, MIN_LS = 5, MAX_LS = 20, W10 = 10;
 
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        string name;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
+        Node(string na, Node* p = nullptr, Node* n = nullptr) {
+            name = na; 
             prev = p;
             next = n;
         }
@@ -33,13 +34,13 @@ private:
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void insert_after(int value, int position) {
+    void insert_after(string na, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(na);
         if (!head) {
             head = tail = newNode;
             return;
@@ -64,12 +65,12 @@ public:
         temp->next = newNode;
     }
 
-    void delete_val(int value) {
+    void delete_val(string na) {
         if (!head) return;
 
         Node* temp = head;
         
-        while (temp && temp->data != value)
+        while (temp && temp->name != na)
             temp = temp->next;
 
         if (!temp) return; 
@@ -193,8 +194,10 @@ public:
             cout << "List is empty." << endl;
             return;
         }
+        
+        cout << setw(10) << "Resulting line:" << endl;
         while (current) {
-            cout << current->data << " ";
+            cout << current->data << "";
             current = current->next;
         }
         cout << endl;
@@ -248,17 +251,14 @@ int main() {
     for (int i = 0; i < 5; i++)
     {
         int randomN = rand() % names.size();
-        cout << names[randomN] << " joins the line" << endl;
+        cout << setw(W10) << names[randomN] << " joins the line" << endl;
         line.push_back(randomN);
         lineSize++;
     }
+    line.print();
     
     fin.close();
 
-    cout << "Resulting line:" << endl;
-    {
-
-    }
     
     // 40 % probability of Event A happening:
     //int prob = rand() % 100 + 1  // returns random number 1-100
