@@ -1,3 +1,9 @@
+// COMSC-210 | Midterm #2 | Annie Morales
+// IDE used: Visual Studio Code
+
+// This program simulates a line at a coffee shop, which will run for 
+// 20 time periods (minutes) and display the current line at the coffee shop.
+
 #include <iostream>
 using namespace std;
 
@@ -204,8 +210,11 @@ public:
 };
 
 int main() {
+    
+    
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
+    cout << "Store opens:" << endl;
     
     return 0;
 }
