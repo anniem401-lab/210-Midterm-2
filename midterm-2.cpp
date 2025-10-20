@@ -12,7 +12,7 @@
 #include <string>   // FOr using string
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_NR = 1, MAX_NR = 100, MIN_LS = 5, MAX_LS = 20;
 
 class DoublyLinkedList {
 private:
@@ -238,12 +238,12 @@ int main() {
 
     DoublyLinkedList line;
 
-
     cout << "Store opens:" << endl; // The store's open and five customers are in line.
     for (int i = 0; i < 5; i++)
     {
-        string customer;
+        line.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
         cout << " " << " joins the line" << endl;
+        line.print();
     }
 
     cout << "Resulting line:" << endl;
@@ -252,11 +252,11 @@ int main() {
     }
     
     // 40 % probability of Event A happening:
-    int prob = rand() % 100 + 1  // returns random number 1-100
-    if (prob <= 40) 
-    {
+    //int prob = rand() % 100 + 1  // returns random number 1-100
+    //if (prob <= 40) 
+    //{
     // perform Event A
-    }
+    //}
 
     return 0;
 }
