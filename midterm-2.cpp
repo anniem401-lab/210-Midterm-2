@@ -9,7 +9,7 @@
 #include <ctime>    // For time()
 #include <cstdlib>  // for rand() and srand()
 #include <vector>   // For using vector
-#include <string>   // FOr using string
+#include <string>   // For using string
 #include <iomanip>
 using namespace std;
 
@@ -125,8 +125,8 @@ public:
         delete temp;
     }
 
-    void push_back(int v) {
-        Node* newNode = new Node(v);
+    void push_back(string na) {
+        Node* newNode = new Node(na);
         if (!tail)
             head = tail = newNode;
         else {
@@ -136,8 +136,8 @@ public:
         }
     }
     
-    void push_front(int v) {
-        Node* newNode = new Node(v);
+    void push_front(string na) {
+        Node* newNode = new Node(na);
         if (!head)
             head = tail = newNode;
         else {
@@ -197,7 +197,7 @@ public:
         
         cout << setw(10) << "Resulting line:" << endl;
         while (current) {
-            cout << current->data << "";
+            cout << setw(10) << current->name << " \n";
             current = current->next;
         }
         cout << endl;
@@ -210,7 +210,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->prev;
         }
         cout << endl;
@@ -252,10 +252,17 @@ int main() {
     {
         int randomN = rand() % names.size();
         cout << setw(W10) << names[randomN] << " joins the line" << endl;
-        line.push_back(randomN);
+        line.push_back(names[randomN]);
         lineSize++;
     }
     line.print();
+
+    int timeSteps = 20; // Timesteps during simulation
+
+    for (int i = 1; i < timeSteps; i++)
+    {
+        cout << setw(10) << "Time Step #" << i + 1 << endl;
+    }
     
     fin.close();
 
