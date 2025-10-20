@@ -266,7 +266,6 @@ int main() {
     
     fin.close();
 
-    
     // 40 % probability of Event A happening:
     //int prob = rand() % 100 + 1  // returns random number 1-100
     //if (prob <= 40) 
