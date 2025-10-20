@@ -6,8 +6,8 @@
 
 #include <iostream>
 #include <fstream> // For file operations
-#include <ctime>
-#include <cstdlib>  
+#include <ctime>    // For time()
+#include <cstdlib>  // for rand() and srand()
 #include <vector>   // For using vector
 #include <string>   // FOr using string
 using namespace std;
@@ -215,7 +215,7 @@ public:
 };
 
 int main() {
-    srand(time(0)); // Seed for random number generator.
+    srand(time(0)); // Seed for random number generation.
 
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
@@ -236,7 +236,13 @@ int main() {
     }
     inputFile.close(); //Closes the file
 
+    
+
     cout << "Store opens:" << endl; // The store's open and five customers are in line.
+    for (int i = 0; i < 5; i++)
+    {
+
+    }
     
     return 0;
 }
