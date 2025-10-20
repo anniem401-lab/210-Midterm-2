@@ -236,13 +236,27 @@ int main() {
     }
     inputFile.close(); //Closes the file
 
-    
+    DoublyLinkedList line;
+
 
     cout << "Store opens:" << endl; // The store's open and five customers are in line.
     for (int i = 0; i < 5; i++)
     {
+        string customer;
+        cout << " " << " joins the line" << endl;
+    }
+
+    cout << "Resulting line:" << endl;
+    {
 
     }
     
+    // 40 % probability of Event A happening:
+    int prob = rand() % 100 + 1  // returns random number 1-100
+    if (prob <= 40) 
+    {
+    // perform Event A
+    }
+
     return 0;
 }
