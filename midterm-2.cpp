@@ -5,6 +5,11 @@
 // 20 time periods (minutes) and display the current line at the coffee shop.
 
 #include <iostream>
+#include <fstream> // For file operations
+#include <ctime>
+#include <cstdlib>  
+#include <vector>   // For using vector
+#include <string>   // FOr using string
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -210,11 +215,28 @@ public:
 };
 
 int main() {
-    
-    
+    srand(time(0)); // Seed for random number generator.
+
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
-    cout << "Store opens:" << endl;
+    vector<string> names; // Vector to store names (99 total names)
+    ifstream inputFile("names.txt");
+
+    // Checks if file opened succesfully
+    if (!inputFile)
+    {
+        cerr << "Error opening file!" << endl;
+        return 1; // Exit with error code
+    }
+
+    string name;
+    while (inputFile >> name)
+    {
+        names.push_back(name);
+    }
+    inputFile.close(); //Closes the file
+
+    cout << "Store opens:" << endl; // The store's open and five customers are in line.
     
     return 0;
 }
