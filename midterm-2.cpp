@@ -217,7 +217,7 @@ public:
 int main() {
     srand(time(0)); // Seed for random number generation.
 
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+    //cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
     vector<string> names; // Vector to store names (99 total names)
     ifstream fin;
@@ -234,28 +234,26 @@ int main() {
     }
     fin.close(); //Closes the file
 
-    // Reopening file to read names line by line
-    fin.open("names.txt");
-    if (!fin.good()) throw "I/O error";
     while (!fin.eof())
     {
-        string name;
         getline(fin, name);
         if (!getline(fin, name)) break; //Break if no more lines
     }
-    fin.close();
-
+    
     DoublyLinkedList line;
+
     int lineSize = 0; // Size of line
 
     cout << "Store opens:" << endl; // The store's open and five customers are in line.
     for (int i = 0; i < 5; i++)
     {
-        line.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
-        cout << " " << " joins the line" << endl;
+        int randomN = rand() % names.size();
+        cout << names[randomN] << " joins the line" << endl;
+        line.push_back(randomN);
         lineSize++;
-        line.print();
     }
+    
+    fin.close();
 
     cout << "Resulting line:" << endl;
     {
