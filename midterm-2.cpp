@@ -220,21 +220,29 @@ int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
     vector<string> names; // Vector to store names (99 total names)
-    ifstream inputFile("names.txt");
+    ifstream fin;
+    fin.open("names.txt");
 
     // Checks if file opened succesfully
-    if (!inputFile)
-    {
-        cerr << "Error opening file!" << endl;
-        return 1; // Exit with error code
-    }
+    if (!fin.good()) throw "I/O error";
 
+    // Reads names from file and stores them in vector
     string name;
-    while (inputFile >> name)
+    while (getline(fin, name))
     {
         names.push_back(name);
     }
-    inputFile.close(); //Closes the file
+    fin.close(); //Closes the file
+
+    // Reopening file to read names line by line
+    fin.open("names.txt");
+    if (!fin.good()) throw "I/O error";
+    while (!fin.eof())
+    {
+        getline(fin, name);
+        if (!getline(fin, name)) break; //Break if no more lines
+    }
+    fin.close();
 
     DoublyLinkedList line;
 
