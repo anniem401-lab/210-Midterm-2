@@ -239,18 +239,21 @@ int main() {
     if (!fin.good()) throw "I/O error";
     while (!fin.eof())
     {
+        string name;
         getline(fin, name);
         if (!getline(fin, name)) break; //Break if no more lines
     }
     fin.close();
 
     DoublyLinkedList line;
+    int lineSize = 0; // Size of line
 
     cout << "Store opens:" << endl; // The store's open and five customers are in line.
     for (int i = 0; i < 5; i++)
     {
         line.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
         cout << " " << " joins the line" << endl;
+        lineSize++;
         line.print();
     }
 
